@@ -301,40 +301,68 @@ export default function Index() {
       <SafeAreaView style={styles.container}>
         <StatusBar style="light" />
         <View style={styles.raceContainer}>
-          <Text style={styles.raceTitle}>🏁 RACE IN PROGRESS 🏁</Text>
+          {/* Race Header */}
+          <View style={styles.raceHeader}>
+            <MaterialCommunityIcons name="flag-checkered" size={32} color="#F39C12" />
+            <Text style={styles.raceTitle}>RACE IN PROGRESS</Text>
+            <MaterialCommunityIcons name="flag-checkered" size={32} color="#F39C12" />
+          </View>
           
+          {/* Race Tracks */}
           <View style={styles.trackContainer}>
             {[0, 1, 2, 3, 4].map((index) => (
-              <View key={index} style={styles.track}>
-                <View style={styles.trackNumber}>
-                  <Text style={styles.trackNumberText}>#{index + 1}</Text>
+              <View key={index} style={styles.trackWrapper}>
+                {/* Lane Label */}
+                <View style={[styles.laneLabel, { backgroundColor: ROACH_COLORS[index] }]}>
+                  <Text style={styles.laneLabelText}>{ROACH_NAMES[index]}</Text>
+                  <Text style={styles.laneLabelNumber}>#{index + 1}</Text>
                 </View>
-                <View style={styles.trackLine}>
-                  <Animated.View
-                    style={[
-                      styles.roachRunner,
-                      {
-                        backgroundColor: ROACH_COLORS[index],
-                        transform: [{
-                          translateX: raceAnimations[index].interpolate({
-                            inputRange: [0, 1],
-                            outputRange: [0, width - 120]
-                          })
-                        }]
-                      },
-                      selectedRoach === index + 1 && styles.selectedRunner
-                    ]}
-                  >
-                    <MaterialCommunityIcons name="bug" size={24} color="#000" />
-                  </Animated.View>
+                
+                {/* Track Lane */}
+                <View style={styles.track}>
+                  <View style={styles.trackLine}>
+                    {/* Track stripes for visual effect */}
+                    <View style={styles.trackStripes}>
+                      {[...Array(10)].map((_, i) => (
+                        <View key={i} style={styles.trackStripe} />
+                      ))}
+                    </View>
+                    
+                    {/* Racing Cockroach */}
+                    <Animated.View
+                      style={[
+                        styles.roachRunner,
+                        {
+                          backgroundColor: ROACH_COLORS[index],
+                          transform: [{
+                            translateX: raceAnimations[index].interpolate({
+                              inputRange: [0, 1],
+                              outputRange: [0, width - 160]
+                            })
+                          }]
+                        },
+                        selectedRoach === index + 1 && styles.selectedRunner
+                      ]}
+                    >
+                      <MaterialCommunityIcons name="bug" size={28} color="#FFF" />
+                    </Animated.View>
+                  </View>
+                  
+                  {/* Finish Line */}
+                  <View style={styles.finishLine}>
+                    <MaterialCommunityIcons name="flag-checkered" size={28} color="#F39C12" />
+                  </View>
                 </View>
-                <MaterialCommunityIcons name="flag-checkered" size={24} color="#FFE66D" />
               </View>
             ))}
           </View>
 
+          {/* Race Status */}
           {isRacing && (
-            <ActivityIndicator size="large" color="#FFE66D" style={styles.loader} />
+            <View style={styles.raceStatus}>
+              <ActivityIndicator size="large" color="#2ECC71" />
+              <Text style={styles.raceStatusText}>Racing...</Text>
+            </View>
           )}
         </View>
       </SafeAreaView>
