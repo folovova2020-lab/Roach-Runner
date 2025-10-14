@@ -16,8 +16,22 @@ import { StatusBar } from 'expo-status-bar';
 
 const { width } = Dimensions.get('window');
 
-// Cockroach colors for visualization
-const ROACH_COLORS = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#95E1D3', '#F38181'];
+// Vibrant game-style colors for cockroaches
+const ROACH_COLORS = [
+  '#FF6B35', // Vibrant Orange
+  '#9B59B6', // Purple
+  '#2ECC71', // Green
+  '#F39C12', // Golden Yellow
+  '#E74C3C'  // Red
+];
+
+const ROACH_NAMES = [
+  'Speedy',
+  'Thunder',
+  'Flash',
+  'Bolt',
+  'Rocket'
+];
 
 interface Cockroach {
   id: number;
