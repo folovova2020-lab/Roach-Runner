@@ -131,26 +131,47 @@ export default function Index() {
       <SafeAreaView style={styles.container}>
         <StatusBar style="light" />
         <View style={styles.homeContainer}>
-          <MaterialCommunityIcons name="bug" size={120} color="#FFE66D" />
-          <Text style={styles.title}>🏆 ROACH RUNNERS 🏆</Text>
-          <Text style={styles.subtitle}>Web3 Cockroach Racing Game</Text>
+          {/* Logo/Icon */}
+          <View style={styles.logoContainer}>
+            <MaterialCommunityIcons name="bug" size={100} color="#FF6B35" />
+            <View style={styles.logoGlow} />
+          </View>
           
-          <View style={styles.featureContainer}>
-            <Text style={styles.featureText}>🎮 Race cockroaches</Text>
-            <Text style={styles.featureText}>💰 Bet with MATIC</Text>
-            <Text style={styles.featureText}>🏅 Win rewards</Text>
+          {/* Title */}
+          <Text style={styles.title}>ROACH RUNNERS</Text>
+          <Text style={styles.subtitle}>Web3 Racing Game</Text>
+          
+          {/* Features Grid */}
+          <View style={styles.featureGrid}>
+            <View style={styles.featureCard}>
+              <MaterialCommunityIcons name="speedometer" size={32} color="#FF6B35" />
+              <Text style={styles.featureLabel}>Fast Races</Text>
+            </View>
+            <View style={styles.featureCard}>
+              <MaterialCommunityIcons name="cash-multiple" size={32} color="#9B59B6" />
+              <Text style={styles.featureLabel}>Real Betting</Text>
+            </View>
+            <View style={styles.featureCard}>
+              <MaterialCommunityIcons name="trophy" size={32} color="#F39C12" />
+              <Text style={styles.featureLabel}>Win Big</Text>
+            </View>
           </View>
 
+          {/* CTA Button */}
           <TouchableOpacity
             style={styles.connectButton}
             onPress={connectWallet}
+            activeOpacity={0.8}
           >
+            <MaterialCommunityIcons name="wallet" size={24} color="#000" />
             <Text style={styles.connectButtonText}>Connect Wallet</Text>
           </TouchableOpacity>
 
-          <Text style={styles.infoText}>
-            Phase 1 MVP - Mumbai Testnet
-          </Text>
+          {/* Network Badge */}
+          <View style={styles.networkBadge}>
+            <View style={styles.networkDot} />
+            <Text style={styles.networkText}>Mumbai Testnet</Text>
+          </View>
         </View>
       </SafeAreaView>
     );
