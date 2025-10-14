@@ -511,16 +511,29 @@ const styles = StyleSheet.create({
   roachCardSelected: {
     borderColor: '#fff',
   },
-  roachNumber: {
-    fontSize: 16,
+  roachName: {
+    fontSize: 14,
     fontWeight: 'bold',
-    color: '#000',
+    color: '#FFF',
     marginTop: 8,
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 3,
   },
-  checkIcon: {
+  roachNumber: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#FFF',
+    marginTop: 2,
+    opacity: 0.9,
+  },
+  selectedBadge: {
     position: 'absolute',
-    top: 4,
-    right: 4,
+    top: -8,
+    right: -8,
+    backgroundColor: '#000',
+    borderRadius: 20,
+    padding: 2,
   },
   infoCard: {
     margin: 16,
