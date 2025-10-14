@@ -218,17 +218,19 @@ export default function Index() {
                 >
                   <MaterialCommunityIcons 
                     name="bug" 
-                    size={40} 
-                    color="#000" 
+                    size={48} 
+                    color="#FFF" 
                   />
+                  <Text style={styles.roachName}>{ROACH_NAMES[index]}</Text>
                   <Text style={styles.roachNumber}>#{id}</Text>
                   {selectedRoach === id && (
-                    <MaterialCommunityIcons 
-                      name="check-circle" 
-                      size={24} 
-                      color="#fff" 
-                      style={styles.checkIcon}
-                    />
+                    <View style={styles.selectedBadge}>
+                      <MaterialCommunityIcons 
+                        name="check-circle" 
+                        size={28} 
+                        color="#FFD700" 
+                      />
+                    </View>
                   )}
                 </TouchableOpacity>
               ))}
